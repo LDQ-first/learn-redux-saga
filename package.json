@@ -6,7 +6,7 @@
   "scripts": {
     "test": "babel-node sagas.spec.js | tap-spec",
     "start": "budo main.js:build.js --dir ./ --verbose  --live -- -t babelify",
-    "add": "git add . && git commit -m 'modify'"
+    "git": "git add . && git commit -m 'modify' && git push origin master"
   },
   "repository": {
     "type": "git",

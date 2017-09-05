@@ -9,14 +9,15 @@ import reducer from './reducers'
 
 import createSagaMiddleware from 'redux-saga'
 
-import rootSaga from './sagas'
+import rootSaga,{watchIncrementAsync} from './sagas'
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(sagaMiddleware)
 )
-sagaMiddleware.run(rootSaga)
+sagaMiddleware.run(watchIncrementAsync)
 
 
 
@@ -32,7 +33,7 @@ function render() {
       onIncrementAsync={() => action('INCREMENT_ASYNC')} />,
     document.getElementById('root')
   )
-}
+}  
 
 render()
 store.subscribe(render)
